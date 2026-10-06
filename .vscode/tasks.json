@@ -11,7 +11,9 @@
                 "-Wextra",
                 "${file}",
                 "-o",
-                "${fileDirname}/${fileBasenameNoExtension}.exe"
+                "${fileDirname}/${fileBasenameNoExtension}.exe",
+                "-finput-charset=UTF-8",
+                "-fexec-charset=UTF-8"
             ],
             "options": {
                 "cwd": "${fileDirname}"
@@ -34,10 +36,11 @@
                 "${file}",
                 "-o",
                 "${fileDirname}\\${fileBasenameNoExtension}.exe",
-                ""
+                "-finput-charset=UTF-8",
+                "-fexec-charset=UTF-8"
             ],
             "options": {
-                "cwd": "D:/b/w64devkit/bin"
+                "cwd": "${fileDirname}"
             },
             "problemMatcher": [
                 "$gcc"

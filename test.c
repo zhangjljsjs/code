@@ -11,7 +11,6 @@
 #include <stdlib.h>
 #include <time.h>
 
-
 // ---------------------------------------------------------------------------
 // 示例1：用 sizeof 求数组元素个数，并观察元素地址
 //   sizeof(arr)            整个数组的字节数
@@ -21,17 +20,17 @@
 // ---------------------------------------------------------------------------
 // int main()
 //{
-//	int arr[]={1,2,3,4,5,6,7,8,9,10};  // []
-//里不写长度，由花括号里的元素个数决定 	int i = 0;
+//	int arr[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};  // [] 里不写长度，由花括号里的元素个数决定
+//	int i = 0;
 //
-//	printf("%zu\n",sizeof(arr));                 //
-//整个数组占多少字节，不是元素个数 	printf("%zu\n",sizeof(arr[0])); // 一个 int
-//占多少字节 	printf("%zu\n",sizeof(arr)/sizeof(arr[0]));  // 元素个数
+//	printf("%zu\n", sizeof(arr));                    // 整个数组占多少字节，不是元素个数
+//	printf("%zu\n", sizeof(arr[0]));                 // 一个 int 占多少字节
+//	printf("%zu\n", sizeof(arr) / sizeof(arr[0]));   // 元素个数
 //
-//	int sz = sizeof(arr)/sizeof(arr[0]);
-//	for(i = 0 ; i < sz ; i++)
+//	int sz = sizeof(arr) / sizeof(arr[0]);
+//	for (i = 0; i < sz; i++)
 //	{
-//		printf("&arr[%d]=%p\n" , i , &arr[i]);
+//		printf("&arr[%d]=%p\n", i, &arr[i]);
 //	}
 //	return 0;
 //}
@@ -44,17 +43,17 @@
 // ---------------------------------------------------------------------------
 // int main()
 //{
-//	int arr[]={1,2,3,4,5,6,7,8,9,10,};
+//	int arr[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 //
 //	int i = 0;
-//	for(i=0;i<10;i++)
+//	for (i = 0; i < 10; i++)
 //	{
-//		scanf("%d",&arr[i]);
+//		scanf("%d", &arr[i]);
 //	}
 //
-//	for(i=0;i<10;i++)
+//	for (i = 0; i < 10; i++)
 //	{
-//		printf("%d ",arr[i]);
+//		printf("%d ", arr[i]);
 //	}
 //
 //	return 0;
@@ -70,46 +69,46 @@
 // void game()
 //{
 //	int guess = 0;
-//	int r = rand()%100+1;
+//	int r = rand() % 100 + 1;
 //	int count = 5;
 //	time_t begin = time(NULL);
 //
 //	printf("请输入数字\n");
 //
-//	while(count)  // count 为 0 时条件为假，循环结束
+//	while (count)  // count 为 0 时条件为假，循环结束
 //	{
-//		printf("你还有%d次机会\n",count);
+//		printf("你还有%d次机会\n", count);
 //		printf("请猜数字\n");
-//		scanf("%d",&guess);
+//		scanf("%d", &guess);
 //
-//		if(guess>r)
+//		if (guess > r)
 //		{
 //			printf("猜大了\n");
 //		}
-//		else if(guess<r)
+//		else if (guess < r)
 //		{
 //			printf("猜小了\n");
 //		}
 //		else
 //		{
 //			printf("猜对了!\n");
-//			printf("恭喜你猜对了！本局用时 %.0f 秒\n",
-//difftime(time(NULL), begin)); 			break;
+//			printf("恭喜你猜对了！本局用时 %.0f 秒\n", difftime(time(NULL), begin));
+//			break;
 //		}
 //		count--;  // 猜错才扣次数；猜对已经 break，不会执行到这里
 //	}
-//	if(count ==0)
+//	if (count == 0)
 //	{
-//	printf("很遗憾，5次机会使用完，游戏结束。\n");
-//	printf("本局共用时 %.0f 秒\n", difftime(time(NULL), begin));
+//		printf("很遗憾，5次机会使用完，游戏结束。\n");
+//		printf("本局共用时 %.0f 秒\n", difftime(time(NULL), begin));
 //	}
 //}
 
 // ---------------------------------------------------------------------------
 // 示例4：猜数字的菜单（和示例3 的 game 一起取消注释）
-//   srand 用当前时间做种子，整个程序调用一次即可；不播种的话每次 rand
-//   序列都一样。 do-while 先显示菜单再判断，所以菜单至少出现一次。
-//   while(input)：输入 0 时条件为假，循环结束。
+//   srand 用当前时间做种子，整个程序调用一次即可；不播种的话每次 rand 序列都一样。
+//   do-while 先显示菜单再判断，所以菜单至少出现一次。
+//   while (input)：输入 0 时条件为假，循环结束。
 //   每个 case 末尾的 break 用来离开 switch；漏写会继续执行后面的 case。
 // ---------------------------------------------------------------------------
 // int main()
@@ -123,9 +122,9 @@
 //		printf("--------0.exit-------\n");
 //		printf("---------------------\n");
 //
-//		scanf("%d",&input);
+//		scanf("%d", &input);
 //
-//		switch(input)
+//		switch (input)
 //		{
 //		case 1:
 //			game();
@@ -133,11 +132,11 @@
 //		case 0:
 //			printf("退出\n");
 //			break;
-//		default :
+//		default:
 //			printf("输入错误\n");
 //			break;
 //		}
-//	}while(input);
+//	} while (input);
 //
 //	return 0;
 //}
@@ -149,11 +148,11 @@
 // int main()
 //{
 //	srand((unsigned int)time(NULL));
-//	printf("%d\n",rand()%100+1);
-//	printf("%d\n",rand()%100+1);
-//	printf("%d\n",rand()%100+1);
-//	printf("%d\n",rand()%100+1);
-//	printf("%d\n",rand()%100+1);
+//	printf("%d\n", rand() % 100 + 1);
+//	printf("%d\n", rand() % 100 + 1);
+//	printf("%d\n", rand() % 100 + 1);
+//	printf("%d\n", rand() % 100 + 1);
+//	printf("%d\n", rand() % 100 + 1);
 //	return 0;
 //}
 
@@ -206,9 +205,9 @@
 // int main()
 //{
 //	int day = 0;
-//	scanf("%d",&day);
+//	scanf("%d", &day);
 //
-//	switch(day)
+//	switch (day)
 //	{
 //	case 1:
 //		printf("星期一");
@@ -231,7 +230,7 @@
 //	case 7:
 //		printf("星期天");
 //		break;
-//	default :
+//	default:
 //		printf("输入错误");
 //		break;
 //	}
@@ -248,7 +247,7 @@
 //{
 //	int i = 1;
 //
-//	while(i <= 10)
+//	while (i <= 10)
 //	{
 //		printf("1");
 //		i++;
@@ -264,11 +263,11 @@
 // int main()
 //{
 //	int num = 0;
-//	scanf("%d",&num);
+//	scanf("%d", &num);
 //
-//	while(num)  // num 变成 0 时结束；输入 0 时循环体一次都不执行
+//	while (num)  // num 变成 0 时结束；输入 0 时循环体一次都不执行
 //	{
-//		printf("%d ",num % 10);
+//		printf("%d ", num % 10);
 //		num = num / 10  // 这里少了分号
 //	}
 //
@@ -282,7 +281,7 @@
 // int main()
 //{
 //	int i = 0;
-//	for(i = 1; i <= 10 ; i++)
+//	for (i = 1; i <= 10; i++)
 //	{
 //		printf("%d", i);
 //	}
@@ -299,13 +298,13 @@
 //	int i = 0;
 //	int sum = 0;  // 累加前必须是 0，否则结果里会带上 sum 里原来的垃圾值
 //
-//	for(i=3;i<=100;i+=3)
+//	for (i = 3; i <= 100; i += 3)
 //	{
-//		if(i%3==0)  // 以当前步长来说，这个判断恒为真
-//		sum+=i;
+//		if (i % 3 == 0)  // 以当前步长来说，这个判断恒为真
+//			sum += i;
 //	}
 //
-//	printf("%d",sum);
+//	printf("%d", sum);
 //
 //	return 0;
 //}
@@ -324,11 +323,11 @@
 //
 //	do
 //	{
-//		n/=10;     // 去掉最低一位
-//		count+=1;
-//	}while(n);     // n 变成 0 后结束
+//		n /= 10;    // 去掉最低一位
+//		count += 1;
+//	} while (n);    // n 变成 0 后结束
 //
-//	printf("%d",count);
+//	printf("%d", count);
 //
 //	return 0;
 //}
@@ -345,26 +344,26 @@
 // int main()
 //{
 //	int i = 0;
-//	for(i=101;i<=200;i+=2)
+//	for (i = 101; i <= 200; i += 2)
 //	{
 //		int flag = 1;  // 先假定是素数，找到因数再改成 0
 //		int j = 0;
 //
-//		for(j=2 ; j<=sqrt(i); j++)
+//		for (j = 2; j <= sqrt(i); j++)
 //		{
-//			if(i%j == 0)
+//			if (i % j == 0)
 //			{
 //				flag = 0;
 //				break;
 //			}
 //		}
-//		if(flag == 1)
+//		if (flag == 1)
 //		{
-//			printf("%d ",i);
+//			printf("%d ", i);
 //		}
 //
-////		if(i==j)
-////		printf("%d ",i);
+////		if (i == j)
+////			printf("%d ", i);
 //	}
 //
 //	return 0;
@@ -377,25 +376,25 @@
 //   arr[3][5] 一共 15 个 int，连续占用 3*5*4 = 60 字节。
 // ---------------------------------------------------------------------------
 // int main()
-// {
-// 	int arr[3][5] = {0};
-// 	int i = 0;
+//{
+//	int arr[3][5] = {0};
+//	int i = 0;
 //
-// 	for (i = 0;i < 3;i++)
-// 	{
-// 		int j = 0;
-// 		for (j = 0;j < 5;j++)
-// 		{
-// 			printf("arr[%d][%d]%p\n", i, j, &arr[i][j]);
-// 		}
-// 	}
-// 	return 0;
-// }
+//	for (i = 0; i < 3; i++)
+//	{
+//		int j = 0;
+//		for (j = 0; j < 5; j++)
+//		{
+//			printf("arr[%d][%d]%p\n", i, j, &arr[i][j]);
+//		}
+//	}
+//	return 0;
+//}
 
 // ---------------------------------------------------------------------------
 // 当前生效的程序：读入长度 n，把数组填成 1~n，再打印出来
 //   int arr[n] 是变长数组（C99）。GCC 支持；MSVC 不支持，换 MSVC 编译会报错。
-//   n 必须是正整数。n<=0 时这个数组声明是非法的。
+//   n 必须正整数。n<=0 时这个数组声明是非法的。
 // ---------------------------------------------------------------------------
 int main()
 {
