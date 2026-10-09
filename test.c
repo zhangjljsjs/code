@@ -10,6 +10,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <string.h>
+#include <windows.h>
 
 // ---------------------------------------------------------------------------
 // 示例1：用 sizeof 求数组元素个数，并观察元素地址
@@ -20,12 +22,12 @@
 // ---------------------------------------------------------------------------
 // int main()
 //{
-//	int arr[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};  // [] 里不写长度，由花括号里的元素个数决定
-//	int i = 0;
+//	int arr[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};  // []
+// 里不写长度，由花括号里的元素个数决定 	int i = 0;
 //
-//	printf("%zu\n", sizeof(arr));                    // 整个数组占多少字节，不是元素个数
-//	printf("%zu\n", sizeof(arr[0]));                 // 一个 int 占多少字节
-//	printf("%zu\n", sizeof(arr) / sizeof(arr[0]));   // 元素个数
+//	printf("%zu\n", sizeof(arr));                    //
+// 整个数组占多少字节，不是元素个数 	printf("%zu\n", sizeof(arr[0])); // 一个 int
+// 占多少字节 	printf("%zu\n", sizeof(arr) / sizeof(arr[0]));   // 元素个数
 //
 //	int sz = sizeof(arr) / sizeof(arr[0]);
 //	for (i = 0; i < sz; i++)
@@ -92,8 +94,8 @@
 //		else
 //		{
 //			printf("猜对了!\n");
-//			printf("恭喜你猜对了！本局用时 %.0f 秒\n", difftime(time(NULL), begin));
-//			break;
+//			printf("恭喜你猜对了！本局用时 %.0f 秒\n",
+// difftime(time(NULL), begin)); 			break;
 //		}
 //		count--;  // 猜错才扣次数；猜对已经 break，不会执行到这里
 //	}
@@ -106,10 +108,10 @@
 
 // ---------------------------------------------------------------------------
 // 示例4：猜数字的菜单（和示例3 的 game 一起取消注释）
-//   srand 用当前时间做种子，整个程序调用一次即可；不播种的话每次 rand 序列都一样。
-//   do-while 先显示菜单再判断，所以菜单至少出现一次。
-//   while (input)：输入 0 时条件为假，循环结束。
-//   每个 case 末尾的 break 用来离开 switch；漏写会继续执行后面的 case。
+//   srand 用当前时间做种子，整个程序调用一次即可；不播种的话每次 rand
+//   序列都一样。 do-while 先显示菜单再判断，所以菜单至少出现一次。 while
+//   (input)：输入 0 时条件为假，循环结束。 每个 case 末尾的 break 用来离开
+//   switch；漏写会继续执行后面的 case。
 // ---------------------------------------------------------------------------
 // int main()
 //{
@@ -396,22 +398,71 @@
 //   int arr[n] 是变长数组（C99）。GCC 支持；MSVC 不支持，换 MSVC 编译会报错。
 //   n 必须正整数。n<=0 时这个数组声明是非法的。
 // ---------------------------------------------------------------------------
+// int main()
+// {
+// 	int i = 0;
+// 	int n = 0;
+// 	printf("请输入数组长度：");  // 不加 \n，光标停在冒号后面等待输入
+// 	scanf("%d", &n);             // scanf 要通过地址写入，所以是 &n
+// 	int arr[n];
+
+// 	for (i = 0; i < n; i++)
+// 	{
+// 		arr[i] = i + 1;  // arr[0]=1, arr[1]=2, ..., arr[n-1]=n
+// 	}
+// 	for (i = 0; i < n; i++)
+// 	{
+// 		printf("%d ", arr[i]);  // 形如：1 2 3 4 5
+// 	}
+
+// 	return 0;  // 0 表示正常结束
+// }
+
+// int main()
+// {
+//   char arr1[] = "welcome to zjl";
+//   char arr2[] = "##############";
+
+//   size_t left = 0;
+//   size_t right = strlen(arr1) - 1;
+
+//   while (left < right)
+//   {
+//     arr2[left] = arr1[left];
+//     arr2[right] = arr1[right];
+
+//     printf("%s", arr2);
+
+//     Sleep(1000);
+//     // system("cls");
+//     printf("\r");
+//     left++;
+//     right--;
+//   }
+//   printf("%s", arr2);
+
+//   return 0;
+// }
+
 int main()
 {
-	int i = 0;
-	int n = 0;
-	printf("请输入数组长度：");  // 不加 \n，光标停在冒号后面等待输入
-	scanf("%d", &n);             // scanf 要通过地址写入，所以是 &n
-	int arr[n];
+  int arr[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+  int n = 7;
+  int i = 0;
+  int sz = sizeof(arr) / sizeof(arr[0]);
 
-	for (i = 0; i < n; i++)
-	{
-		arr[i] = i + 1;  // arr[0]=1, arr[1]=2, ..., arr[n-1]=n
-	}
-	for (i = 0; i < n; i++)
-	{
-		printf("%d ", arr[i]);  // 形如：1 2 3 4 5
-	}
+  for (i = 0; i < sz; i++)
+  {
+    if (arr[i] == n)
+    {
+      printf("找到了，这个数的下标是%d\n", i);
+      break;
+    }
+  }
 
-	return 0;  // 0 表示正常结束
+  if (i == sz)
+  {
+    printf("找不到了\n");
+  }
+  return 0;
 }
